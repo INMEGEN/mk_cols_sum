@@ -1,0 +1,10 @@
+#!/bin/bash
+
+find -L data \
+	-name '*.paired.*.counts' \
+	-o -name '*.single.*.counts' \
+| sed \
+	-e 's#data/#results/sum/#g' \
+	-e 's#\.paired\.[a-z]*##g' \
+	-e 's#\.single\.[a-z]*##g' \
+| uniq
